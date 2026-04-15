@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transportes 360 – Mudanzas locales y nacionales en Argentina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --orange: #F47B20;
+    --orange-dark: #D4600A;
+    --blue: #0B2B6B;
+    --blue-mid: #1040A0;
+    --blue-light: #1A52C8;
+    --white: #FFFFFF;
+    --gray-light: #F4F6F9;
+    --gray: #8A96A8;
+    --text: #1A2340;
+    --wa: #25D366;
+    --green: #28a745;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 68px;
+    background: rgba(11,43,107,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--orange);
+  }
+  .nav-logo img { height: 44px; width: auto; display: block; }
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav ul a {
+    color: rgba(255,255,255,0.82); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: color .2s;
+  }
+  nav ul a:hover { color: var(--orange); }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 6px;
+  }
+  .hamburger span {
+    display: block; width: 26px; height: 2px;
+    background: var(--white); border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 190;
+    background: rgba(11,43,107,0.98);
+    border-bottom: 2px solid var(--orange);
+    padding: 1.5rem 5vw 2rem;
+    flex-direction: column; gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.85); text-decoration: none;
+    font-size: 1.1rem; font-weight: 500; letter-spacing: .06em;
+    text-transform: uppercase; padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color .2s;
+  }
+  .mobile-menu a:hover { color: var(--orange); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 500;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--wa);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+    font-size: 1.7rem; color: var(--white); text-decoration: none;
+    transition: transform .25s, box-shadow .25s;
+    animation: waPulse 2.5s infinite;
+  }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.7); }
+  @keyframes waPulse {
+    0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 6px 40px rgba(37,211,102,0.85), 0 0 0 10px rgba(37,211,102,0.12); }
+  }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; justify-content: flex-start;
+    padding: 0 8vw; padding-top: 68px; overflow: hidden;
+    background: var(--blue);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(115deg, rgba(11,43,107,0.97) 0%, rgba(11,43,107,0.75) 55%, rgba(11,43,107,0.2) 100%),
+      url('http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.54-PM.jpeg') center/cover no-repeat;
+  }
+  .hero-diagonal {
+    position: absolute; bottom: -2px; left: 0; right: 0; height: 120px;
+    background: var(--white); clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+  .hero-content { position: relative; max-width: 680px; }
+  .hero-eyebrow {
+    display: inline-block; background: var(--orange); color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 2px; margin-bottom: 1.4rem;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 0.95; text-transform: uppercase; color: var(--white);
+    animation: fadeUp .7s .1s ease both;
+  }
+  .hero-title .accent { color: var(--orange); font-style: italic; }
+  .hero-sub {
+    margin-top: 1.4rem; font-size: 1.05rem; font-weight: 300;
+    color: rgba(255,255,255,0.78); line-height: 1.6;
+    animation: fadeUp .7s .2s ease both;
+  }
+  .hero-cta { margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .7s .3s ease both; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .55rem;
+    padding: 13px 28px; border-radius: 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 1rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    transition: transform .2s, box-shadow .2s; cursor: pointer; border: none;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+  .btn-orange { background: var(--orange); color: var(--white); }
+  .btn-wa { background: var(--wa); color: var(--white); }
+  .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.5); }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; animation: fadeUp .7s .4s ease both; }
+  .hero-stat span {
+    display: block; font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 2.4rem; color: var(--orange);
+  }
+  .hero-stat p { font-size: 0.78rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: .1em; }
+
+  /* ── COMMON ── */
+  section { position: relative; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 5vw; }
+  .section-tag {
+    display: inline-block; font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 0.78rem; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: .6rem;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase; line-height: 1; color: var(--blue);
+  }
+  .section-title .ital { font-style: italic; color: var(--orange); }
+
+  /* ── MAPA LOGÍSTICO ── */
+  #mapa-logistico {
+    padding: 100px 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+  .mapa-container {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-top: 3rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .hub-central {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .hub-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .hub-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--blue);
+  }
+  .hub-title i {
+    color: var(--orange);
+    margin-right: 0.5rem;
+  }
+  /* Mapa horizontal */
+  .mapa-horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .sucursal {
+    background: var(--blue);
+    color: var(--white);
+    padding: 1.2rem 1.8rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 140px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .sucursal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .sucursal i {
+    font-size: 2rem;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .sucursal h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .sucursal p {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+  }
+  .sucursal.central {
+    background: var(--orange);
+    transform: scale(1.02);
+    border: 2px solid var(--white);
+  }
+  .sucursal.central i {
+    color: var(--white);
+  }
+  .flecha {
+    font-size: 1.8rem;
+    color: var(--orange);
+  }
+  .ruta-linea {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px dashed rgba(11,43,107,0.2);
+    flex-wrap: wrap;
+  }
+  .ruta-punto {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--blue);
+  }
+  .ruta-punto i {
+    color: var(--orange);
+  }
+  /* Responsive móvil - flecha única debajo de Buenos Aires */
+  @media (max-width: 700px) {
+    .mapa-horizontal {
+      flex-direction: column;
+    }
+    .flecha {
+      transform: rotate(90deg);
+    }
+    /* Ocultamos las flechas laterales y usamos una sola debajo */
+    .mapa-horizontal .flecha:first-of-type {
+      display: none;
+    }
+    .mapa-horizontal .flecha:last-of-type {
+      display: none;
+    }
+    /* Agregamos una flecha debajo de Buenos Aires con CSS */
+    .sucursal.central::after {
+      content: "\f063";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--orange);
+      display: block;
+      margin-top: 1rem;
+      animation: pulseArrowVertical 1.5s infinite;
+    }
+    @keyframes pulseArrowVertical {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(5px); opacity: 1; }
+    }
+  }
+
+  /* ── TIPOS DE MUDANZA ── */
+  #tipos-mudanza {
+    padding: 100px 0; background: var(--white);
+  }
+  .mudanza-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .mudanza-card {
+    background: var(--gray-light);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s;
+    border: 1px solid #E5E9F0;
+    position: relative;
+    overflow: hidden;
+  }
+  .mudanza-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(11,43,107,0.15);
+  }
+  .mudanza-card.compartida { border-top: 4px solid var(--green); }
+  .mudanza-card.programada { border-top: 4px solid var(--blue); }
+  .mudanza-card.exclusiva { border-top: 4px solid var(--orange); }
+  .mudanza-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .compartida .mudanza-icon { background: rgba(40,167,69,0.15); color: var(--green); }
+  .programada .mudanza-icon { background: rgba(11,43,107,0.15); color: var(--blue); }
+  .exclusiva .mudanza-icon { background: rgba(244,123,32,0.15); color: var(--orange); }
+  .mudanza-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+  .compartida h3 { color: var(--green); }
+  .programada h3 { color: var(--blue); }
+  .exclusiva h3 { color: var(--orange); }
+  .mudanza-card p {
+    color: #5A6480;
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+  .mudanza-card ul {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  .mudanza-card ul li {
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .mudanza-card ul li i {
+    color: var(--orange);
+    width: 18px;
+  }
+
+  /* ── QUIÉNES ── */
+  #quienes { padding: 100px 0 80px; background: var(--white); }
+  .quienes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  .quienes-text p { font-size: 1.08rem; line-height: 1.75; color: #3A4460; margin-bottom: 1.2rem; }
+  .quienes-text p strong { color: var(--orange); }
+  .quienes-text p em { color: var(--blue-light); font-style: normal; font-weight: 600; }
+  .quienes-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-radius: 12px; overflow: hidden; }
+  .quienes-imgs img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+  .quienes-imgs img:first-child { grid-column: 1/-1; height: 200px; }
+
+  /* ── BENEFICIOS ── */
+  #beneficios {
+    padding: 100px 0;
+    background: var(--white);
+  }
+  .ben-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .ben-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .ben-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.2rem 1.4rem;
+    border-radius: 8px;
+    border: 1px solid #E8ECF4;
+    transition: background .2s, border-color .2s;
+  }
+  .ben-item:hover {
+    background: #FFF5EE;
+    border-color: var(--orange);
+  }
+  .ben-icon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1rem;
+  }
+  .ben-item h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: .2rem;
+  }
+  .ben-item p {
+    font-size: 0.83rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .equipos-box {
+    background: var(--blue);
+    border-radius: 16px;
+    padding: 2.8rem 2.5rem;
+  }
+  .equipos-box h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .equipos-box h3 span {
+    color: var(--orange);
+  }
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .7rem;
+  }
+  .equipo-item {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .85rem 1rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    transition: background .2s;
+  }
+  .equipo-item:hover {
+    background: rgba(244,123,32,0.18);
+  }
+  .equipo-item i {
+    color: var(--orange);
+    width: 18px;
+    text-align: center;
+  }
+  @media (max-width: 900px) {
+    .ben-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  /* ── SERVICIOS (2 FILAS x 4 COLUMNAS) ── */
+  #servicios {
+    padding: 100px 0;
+    background: var(--gray-light);
+  }
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .servicio-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem 1.6rem;
+    border: 1px solid #E5E9F0;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .servicio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(11,43,107,0.12);
+    border-color: var(--orange);
+  }
+  .servicio-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transition: transform .25s;
+  }
+  .servicio-card:hover::after {
+    transform: scaleX(1);
+  }
+  .serv-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    color: var(--white);
+    transition: background .25s;
+  }
+  .servicio-card:hover .serv-icon {
+    background: var(--blue);
+  }
+  .servicio-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: .5rem;
+  }
+  .servicio-card p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: #5A6480;
+  }
+  @media (max-width: 1000px) {
+    .servicios-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 560px) {
+    .servicios-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── GALERÍA (6 fotos) ── */
+  #galeria {
+    padding: 100px 0;
+    background: var(--gray-light);
+  }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 280px);
+    gap: 12px;
+    margin-top: 3rem;
+  }
+  .galeria-item {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s;
+    display: block;
+  }
+  .galeria-item:hover img {
+    transform: scale(1.06);
+  }
+  .galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11,43,107,0.75) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity .3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.2rem;
+  }
+  .galeria-item:hover .galeria-overlay {
+    opacity: 1;
+  }
+  .galeria-overlay span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: .05em;
+  }
+  @media (max-width: 900px) {
+    .galeria-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+  }
+  @media (max-width: 560px) {
+    .galeria-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── CONTACTO ── */
+  #contacto { padding: 100px 0 80px; background: var(--gray-light); }
+  .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1.2rem; padding: 1.2rem 1.5rem;
+    border-radius: 10px; background: var(--white); border: 1px solid #E5E9F0;
+    text-decoration: none; color: var(--text); transition: background .2s, border-color .2s;
+  }
+  .contact-item:hover { background: #FFF5EE; border-color: var(--orange); }
+  .contact-icon { width: 46px; height: 46px; border-radius: 8px; background: var(--orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--white); font-size: 1.1rem; }
+  .contact-item span { font-weight: 500; font-size: 0.95rem; }
+  .contact-item small { display: block; font-size: 0.75rem; color: var(--gray); margin-top: 1px; }
+
+  .contact-form-box {
+    background: var(--white); border-radius: 16px;
+    padding: 2.5rem 2rem; border: 1px solid #E5E9F0;
+  }
+  .contact-form-box h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.5rem; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem;
+  }
+  .contact-form-box h3 span { color: var(--orange); font-style: italic; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--blue); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 11px 14px; border-radius: 6px;
+    border: 1px solid #D8DEE8; background: var(--white);
+    font-family: 'Barlow', sans-serif; font-size: 0.9rem; color: var(--text);
+    transition: border-color .2s, box-shadow .2s; outline: none;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(244,123,32,0.12); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .btn-form {
+    width: 100%; justify-content: center; font-size: 1.05rem; padding: 14px;
+  }
+  .form-success {
+    display: none; margin-top: 1rem; padding: 1rem; border-radius: 8px;
+    background: #edfff4; border: 1px solid #25D366; color: #1a7d44;
+    font-size: 0.9rem; font-weight: 500; text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer { background: #060F22; padding: 1.5rem 5vw; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .8rem; }
+  footer p { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-align: center; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    .quienes-grid, .contacto-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 560px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/5492975352493" target="_blank" class="wa-float" title="Escríbenos por WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<nav>
+  <div class="nav-logo">
+    <a href="#hero"><img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-4.51.21-PM.jpeg" alt="Transportes 360 Logo"></a>
+  </div>
+  <ul>
+    <li><a href="#quienes">Nosotros</a></li>
+    <li><a href="#tipos-mudanza">Tipos de Mudanza</a></li>
+    <li><a href="#beneficios">Beneficios</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#mapa-logistico">Mapa Logístico</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#quienes">Nosotros</a>
+  <a href="#tipos-mudanza">Tipos de Mudanza</a>
+  <a href="#beneficios">Beneficios</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#galeria">Galería</a>
+  <a href="#mapa-logistico">Mapa Logístico</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><i class="fas fa-truck-moving"></i> &nbsp;Mudanzas profesionales desde 2008</div>
+    <h1 class="hero-title">
+      TRANSPORTES<span class="accent">360</span><br>
+      <span style="font-size:.55em; font-style:italic; color:rgba(255,255,255,0.7);">Servicio de mudanzas locales y nacionales</span><br>
+      <span style="font-size:.55em; font-style:italic; color:var(--orange);">en toda Argentina</span>
+    </h1>
+    <p class="hero-sub">Mudanzas exclusivas, compartidas, programadas, guardamuebles y embalaje profesional. Tu mudanza, nuestra prioridad.</p>
+    <div class="hero-cta">
+      <a href="https://wa.me/5492975352493" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Escríbenos</a>
+      <a href="#tipos-mudanza" class="btn btn-outline"><i class="fas fa-boxes"></i> Conocé los tipos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span>12+</span><p>Ciudades</p></div>
+      <div class="hero-stat"><span>8+</span><p>Servicios</p></div>
+      <div class="hero-stat"><span>100+</span><p>Clientes</p></div>
+    </div>
+  </div>
+  <div class="hero-diagonal"></div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section id="quienes">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Conócenos</span>
+      <h2 class="section-title">¿QUIÉNES <span class="ital">SOMOS?</span></h2>
+    </div>
+    <div class="quienes-grid">
+      <div class="quienes-text reveal">
+        <p>Somos <strong>Transportes 360</strong>, una empresa especializada en <em>mudanzas locales y nacionales</em> con cobertura en toda Argentina, con base central en <strong>Buenos Aires</strong> y sucursales de acopio en <strong>Bahía Blanca y Comodoro Rivadavia</strong>.</p>
+        <p>Ofrecemos <strong>mudanzas exclusivas, compartidas, programadas, guardamuebles y servicio de embalaje profesional</strong>. Nos adaptamos a tus necesidades, presupuesto y tiempos.</p>
+        <p>Nuestro equipo está capacitado para cuidar cada uno de tus bienes como si fueran propios, brindándote <strong>seguridad, puntualidad y confianza</strong> en cada traslado.</p>
+        <a href="https://wa.me/5492975352493" target="_blank" class="btn btn-wa" style="margin-top:1.5rem;"><i class="fab fa-whatsapp"></i> Cotiza tu mudanza</a>
+      </div>
+      <div class="quienes-imgs reveal" style="transition-delay:.15s">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.51-PM.jpeg" alt="Mudanza profesional">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.48-PM.jpeg" alt="Embalaje">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.52-PM.jpeg" alt="Camión de mudanza">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOS DE MUDANZA -->
+<section id="tipos-mudanza">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Elegí la mejor opción</span>
+      <h2 class="section-title">TIPOS DE <span class="ital">MUDANZA</span></h2>
+      <p style="text-align: center; max-width: 700px; margin: 1rem auto 0; color: #5A6480;">Cada tipo de mudanza tiene un costo diferente. Consultá nuestros precios actualizados.</p>
+    </div>
+    <div class="mudanza-grid">
+      <div class="mudanza-card compartida reveal">
+        <div class="mudanza-icon"><i class="fas fa-users"></i></div>
+        <h3>Mudanza Compartida</h3>
+        <p>Compartís el flete con otros clientes. Ideal para mudanzas pequeñas o con presupuesto ajustado.</p>
+        <ul>
+          <li><i class="fas fa-check"></i> Económica</li>
+          <li><i class="fas fa-check"></i> Tiempo de entrega flexible</li>
+          <li><i class="fas fa-check"></i> Ideal para mudanzas pequeñas</li>
+        </ul>
+      </div>
+      <div class="mudanza-card programada reveal" style="transition-delay:.1s">
+        <div class="mudanza-icon"><i class="fas fa-calendar-week"></i></div>
+        <h3>Mudanza Programada</h3>
+        <p>Planificación anticipada con fecha fija. Logística optimizada para mayor eficiencia.</p>
+        <ul>
+          <li><i class="fas fa-check"></i> Fecha garantizada</li>
+          <li><i class="fas fa-check"></i> Seguimiento en tiempo real</li>
+          <li><i class="fas fa-check"></i> Ideal para empresas y familias</li>
+        </ul>
+      </div>
+      <div class="mudanza-card exclusiva reveal" style="transition-delay:.2s">
+        <div class="mudanza-icon"><i class="fas fa-crown"></i></div>
+        <h3>Mudanza Exclusiva</h3>
+        <p>Servicio premium solo para vos. Vehículo exclusivo, atención personalizada y total prioridad.</p>
+        <ul>
+          <li><i class="fas fa-check"></i> Carga exclusiva</li>
+          <li><i class="fas fa-check"></i> Sin esperas ni consolidación</li>
+          <li><i class="fas fa-check"></i> Ideal para objetos de valor</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reveal" style="text-align: center; margin-top: 2rem;">
+      <a href="https://wa.me/5492975352493" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Consultá tu presupuesto actualizado</a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">¿Por qué elegirnos?</span>
+      <h2 class="section-title">VENTAJAS DE MUDARTE <span class="ital">CON TRANSPORTES 360</span></h2>
+    </div>
+    <div class="ben-layout">
+      <div class="ben-list reveal">
+        <div class="ben-item"><div class="ben-icon"><i class="fas fa-hand-holding-heart"></i></div><div><h4>Atención personalizada</h4><p>Te acompañamos en cada etapa, desde la cotización hasta la última caja.</p></div></div>
+        <div class="ben-item"><div class="ben-icon"><i class="fas fa-shield-alt"></i></div><div><h4>Seguridad total</h4><p>Personal capacitado, vehículos adecuados y materiales de embalaje de calidad.</p></div></div>
+        <div class="ben-item"><div class="ben-icon"><i class="fas fa-clock"></i></div><div><h4>Puntualidad garantizada</h4><p>Cumplimos los horarios acordados, porque tu tiempo es valioso.</p></div></div>
+        <div class="ben-item"><div class="ben-icon"><i class="fas fa-tags"></i></div><div><h4>Precios transparentes</h4><p>Cotización sin sorpresas, ajustada a tu presupuesto y necesidades.</p></div></div>
+        <div class="ben-item"><div class="ben-icon"><i class="fas fa-map-marked-alt"></i></div><div><h4>Cobertura total en el sur</h4><p>Llegamos a Buenos Aires, Bahía Blanca, Comodoro y toda la Patagonia.</p></div></div>
+      </div>
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="equipos-box">
+          <h3>Nuestra <span>Flota</span> y Equipo</h3>
+          <div class="equipo-grid">
+            <div class="equipo-item"><i class="fas fa-truck"></i> Camiones 3.5 ton</div>
+            <div class="equipo-item"><i class="fas fa-truck-moving"></i> Camiones 7 ton</div>
+            <div class="equipo-item"><i class="fas fa-truck"></i> Furgones cerrados</div>
+            <div class="equipo-item"><i class="fas fa-boxes"></i> Materiales de embalaje</div>
+            <div class="equipo-item"><i class="fas fa-dolly"></i> Equipo de maniobra</div>
+            <div class="equipo-item"><i class="fas fa-user-hard-hat"></i> Personal calificado</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;background:var(--gray-light);border-radius:12px;padding:2rem;border:1px solid #E5E9F0;">
+          <h4 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;"><i class="fas fa-star" style="color:var(--orange);margin-right:.4rem"></i>Mudanza 360°</h4>
+          <p style="font-size:.9rem;line-height:1.7;color:#5A6480;">Te ofrecemos una experiencia completa: embalaje, carga, transporte, descarga y colocación. Todo con el respaldo de años de experiencia en el sur argentino.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS (8 servicios en 2 filas x 4 columnas) -->
+<section id="servicios">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Lo que hacemos</span>
+      <h2 class="section-title">NUESTROS <span class="ital">SERVICIOS</span></h2>
+    </div>
+    <div class="servicios-grid">
+      <div class="servicio-card reveal"><div class="serv-icon"><i class="fas fa-truck"></i></div><h3>Mudanzas Exclusivas</h3><p>Servicio personalizado solo para ti, con total dedicación y seguimiento puerta a puerta.</p></div>
+      <div class="servicio-card reveal" style="transition-delay:.05s"><div class="serv-icon"><i class="fas fa-truck-ramp-box"></i></div><h3>Mudanzas Compartidas</h3><p>Alternativa económica compartiendo flete, ideal para mudanzas pequeñas.</p></div>
+      <div class="servicio-card reveal" style="transition-delay:.1s"><div class="serv-icon"><i class="fas fa-warehouse"></i></div><h3>Guarda Muebles</h3><p>Almacenamiento seguro de tus pertenencias por el tiempo que necesites.</p></div>
+      <div class="servicio-card reveal" style="transition-delay:.15s"><div class="serv-icon"><i class="fas fa-box"></i></div><h3>Embalaje Profesional</h3><p>Materiales de primera calidad y técnicas especializadas para máxima protección.</p></div>
+      <div class="servicio-card reveal" style="transition-delay:.2s"><div class="serv-icon"><i class="fas fa-city"></i></div><h3>Mudanzas Locales</h3><p>Traslados dentro de la misma ciudad con agilidad y eficiencia.</p></div>
+      <div class="servicio-card reveal" style="transition-delay:.25s"><div class="serv-icon"><i class="fas fa-map-marked-alt"></i></div><h3>Mudanzas Nacionales</h3><p>Cobertura en todo el país, con seguimiento en tiempo real.</p></div>
+      <div class="servicio-card reveal" style="transition-delay:.3s"><div class="serv-icon"><i class="fas fa-hand-sparkles"></i></div><h3>Desarmado y Armado</h3><p>Desmontaje y montaje de muebles con herramientas y cuidado profesional.</p></div>
+      <div class="servicio-card reveal" style="transition-delay:.35s"><div class="serv-icon"><i class="fas fa-file-signature"></i></div><h3>Seguro de Carga</h3><p>Tus bienes protegidos contra cualquier imprevisto durante el traslado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA DE FOTOS (6 imágenes) -->
+<section id="galeria">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Nuestro Trabajo</span>
+      <h2 class="section-title">GALERÍA DE <span class="ital">MUDANZAS</span></h2>
+    </div>
+    <div class="galeria-grid">
+      <div class="galeria-item reveal">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.57-PM.jpeg" alt="Camión de mudanza">
+        <div class="galeria-overlay"><span>Flota propia</span></div>
+      </div>
+      <div class="galeria-item reveal" style="transition-delay:.08s">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.57-PM-2.jpeg" alt="Embalaje profesional">
+        <div class="galeria-overlay"><span>Embalaje cuidadoso</span></div>
+      </div>
+      <div class="galeria-item reveal" style="transition-delay:.16s">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.49-PM.jpeg" alt="Carga de muebles">
+        <div class="galeria-overlay"><span>Personal experto</span></div>
+      </div>
+      <div class="galeria-item reveal" style="transition-delay:.24s">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.58-PM-1.jpeg" alt="Guarda muebles">
+        <div class="galeria-overlay"><span>Guarda muebles seguro</span></div>
+      </div>
+      <div class="galeria-item reveal" style="transition-delay:.32s">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.57-PM-5.jpeg" alt="Mudanza completa">
+        <div class="galeria-overlay"><span>Servicio profesional</span></div>
+      </div>
+      <div class="galeria-item reveal" style="transition-delay:.4s">
+        <img src="http://arqfra-ai.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-13-at-3.54.58-PM.jpeg" alt="Entrega final">
+        <div class="galeria-overlay"><span>Entrega cuidada</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA LOGÍSTICO -->
+<section id="mapa-logistico">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Nuestra red logística</span>
+      <h2 class="section-title">MAPA DE <span class="ital">OPERACIONES</span></h2>
+    </div>
+    <div class="mapa-container reveal">
+      <div class="hub-central">
+        <div class="hub-badge"><i class="fas fa-star"></i> BASE CENTRAL</div>
+        <div class="hub-title"><i class="fas fa-building"></i> BUENOS AIRES</div>
+        <p style="color: #5A6480; margin-top: 0.5rem;">Centro de operaciones principal · Coordinación y distribución nacional</p>
+      </div>
+      <div class="mapa-horizontal">
+        <div class="sucursal">
+          <i class="fas fa-warehouse"></i>
+          <h4>Bahía Blanca</h4>
+          <p>Sucursal de Acopio</p>
+        </div>
+        <div class="flecha"><i class="fas fa-arrow-right"></i></div>
+        <div class="sucursal central">
+          <i class="fas fa-building"></i>
+          <h4>Buenos Aires</h4>
+          <p>Base Central</p>
+        </div>
+        <div class="flecha"><i class="fas fa-arrow-right"></i></div>
+        <div class="sucursal">
+          <i class="fas fa-warehouse"></i>
+          <h4>Comodoro Rivadavia</h4>
+          <p>Sucursal de Acopio</p>
+        </div>
+      </div>
+      <div class="ruta-linea">
+        <div class="ruta-punto"><i class="fas fa-circle"></i> Bahía Blanca</div>
+        <div class="ruta-punto"><i class="fas fa-circle"></i> Buenos Aires</div>
+        <div class="ruta-punto"><i class="fas fa-circle"></i> Comodoro Rivadavia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-tag">Escríbenos</span>
+      <h2 class="section-title">¡MUDATE CON <span class="ital">TRANSPORTES 360!</span></h2>
+    </div>
+    <div class="contacto-grid">
+      <div class="contact-info reveal">
+        <a href="https://wa.me/5492975352493" target="_blank" class="contact-item">
+          <div class="contact-icon" style="background:var(--wa);"><i class="fab fa-whatsapp"></i></div>
+          <div><span>+54 9 2975 35-2493</span><small>WhatsApp — cotiza tu mudanza ahora</small></div>
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div><span>Buenos Aires (Base Central)</span><small>Bahía Blanca · Comodoro Rivadavia</small></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-clock"></i></div>
+          <div><span>Lun a Vie 9:00 a 19:00 | Sábados 9:00 a 14:00</span><small>Emergencias fuera de horario consultar</small></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-sync-alt"></i></div>
+          <div><span>Presupuestos actualizados cada 15 días</span><small>Consultá precios vigentes</small></div>
+        </div>
+      </div>
+
+      <div class="contact-form-box reveal" style="transition-delay:.15s">
+        <h3>SOLICITÁ TU <span>COTIZACIÓN</span></h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="f-nombre" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" id="f-tel" placeholder="+54 9 XXX XXX-XXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Origen</label>
+            <input type="text" id="f-origen" placeholder="Ciudad de origen">
+          </div>
+          <div class="form-group">
+            <label>Destino</label>
+            <input type="text" id="f-destino" placeholder="Ciudad de destino">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tipo de servicio</label>
+          <select id="f-servicio">
+            <option value="">Selecciona una opción</option>
+            <option>Mudanza Exclusiva</option>
+            <option>Mudanza Compartida</option>
+            <option>Mudanza Programada</option>
+            <option>Guarda Muebles</option>
+            <option>Solo Embalaje Profesional</option>
+            <option>Desarmado y Armado de Muebles</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje / Detalles</label>
+          <textarea id="f-mensaje" placeholder="Contanos qué necesitas mover, cantidad de ambientes, etc..."></textarea>
+        </div>
+        <button class="btn btn-wa btn-form" id="sendWa">
+          <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+        </button>
+        <div class="form-success" id="formSuccess">
+          <i class="fas fa-check-circle"></i> ¡Mensaje listo! Abriendo WhatsApp…
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Transportes 360 · Mudanzas en toda Argentina | Base Central: Buenos Aires</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--orange)' : ''; });
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  document.getElementById('sendWa').addEventListener('click', () => {
+    const nombre   = document.getElementById('f-nombre').value.trim();
+    const tel      = document.getElementById('f-tel').value.trim();
+    const origen   = document.getElementById('f-origen').value.trim();
+    const destino  = document.getElementById('f-destino').value.trim();
+    const servicio = document.getElementById('f-servicio').value;
+    const mensaje  = document.getElementById('f-mensaje').value.trim();
+
+    if (!nombre) { alert('Por favor ingresa tu nombre.'); return; }
+
+    let text = `¡Hola Transportes 360! 👋 Me interesa cotizar una mudanza.\n\n`;
+    text += `*Nombre:* ${nombre}\n`;
+    if (tel)      text += `*Teléfono:* ${tel}\n`;
+    if (origen)   text += `*Origen:* ${origen}\n`;
+    if (destino)  text += `*Destino:* ${destino}\n`;
+    if (servicio) text += `*Tipo de mudanza:* ${servicio}\n`;
+    if (mensaje)  text += `\n*Detalles:* ${mensaje}`;
+
+    const encoded = encodeURIComponent(text);
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    setTimeout(() => {
+      window.open(`https://wa.me/5492975352493?text=${encoded}`, '_blank');
+    }, 600);
+  });
+</script>
+</body>
+</html>
